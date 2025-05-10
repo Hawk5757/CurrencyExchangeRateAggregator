@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "jBCSx6lVJ4mqTCBsiaBArb/9jd/OWwpxi7WwmKQxWnM=",
+  "Source": "CurrencyExchangeRateAggregator",
+  "BasePath": "_content/CurrencyExchangeRateAggregator",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
