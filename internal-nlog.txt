@@ -1,0 +1,17 @@
+2025-05-21 16:27:02.9827 Info Registered target NLog.Targets.ConsoleTarget(Name=logconsole)
+2025-05-21 16:27:03.0321 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2025-05-21 16:27:03.0464 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.4.0.3182. Product version: 5.4.0+4d45d445601312040107cbe2ac00e56c4bf4a60b. GlobalAssemblyCache: False
+2025-05-21 16:27:03.0699 Info Validating config: TargetNames=logconsole, logfile, ConfigItems=28, FilePath=C:\repo_study\CurrencyExchangeRateAggregator\CurrencyExchangeRateAggregator\bin\Debug\net8.0\nlog.config
+2025-05-21 16:27:03.1020 Info Configuration initialized.
+2025-05-21 16:31:29.3154 Info AppDomain Shutting down. LogFactory closing...
+2025-05-21 16:31:29.3393 Info LogFactory has been closed.
+2025-05-21 16:47:46.1977 Info Registered target NLog.Targets.ConsoleTarget(Name=logconsole)
+2025-05-21 16:47:46.2090 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2025-05-21 16:47:46.2208 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.4.0.3182. Product version: 5.4.0+4d45d445601312040107cbe2ac00e56c4bf4a60b. GlobalAssemblyCache: False
+2025-05-21 16:47:46.2208 Info Validating config: TargetNames=logconsole, logfile, ConfigItems=28, FilePath=C:\repo_study\CurrencyExchangeRateAggregator\CurrencyExchangeRateAggregator\bin\Debug\net8.0\NLog.config
+2025-05-21 16:47:46.2437 Info Configuration initialized.
+2025-05-21 16:55:36.9545 Info Registered target NLog.Targets.ConsoleTarget(Name=logconsole)
+2025-05-21 16:55:36.9746 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2025-05-21 16:55:36.9746 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.4.0.3182. Product version: 5.4.0+4d45d445601312040107cbe2ac00e56c4bf4a60b. GlobalAssemblyCache: False
+2025-05-21 16:55:36.9922 Info Validating config: TargetNames=logconsole, logfile, ConfigItems=26, FilePath=C:\repo_study\CurrencyExchangeRateAggregator\CurrencyExchangeRateAggregator\bin\Debug\net8.0\NLog.config
+2025-05-21 16:55:37.0074 Info Configuration initialized.

@@ -2,9 +2,26 @@ using Microsoft.EntityFrameworkCore;
 using CurrencyExchangeRateAggregator.Data;
 using CurrencyExchangeRateAggregator.Services;
 using Microsoft.OpenApi.Models;
-using Swashbuckle.AspNetCore.Annotations;
+using NLog.Web;
+using Polly;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Configure NLog
+builder.Logging.ClearProviders();
+builder.Host.UseNLog();
+
+// Додаємо HttpClient для ICurrencyService/NbuCurrencyService
+builder.Services.AddHttpClient<ICurrencyService, NbuCurrencyService>()
+    .AddTransientHttpErrorPolicy(policyBuilder =>
+        policyBuilder.WaitAndRetryAsync(
+            3, // Кількість повторних спроб
+            retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)),
+            (exception, timespan, retryAttempt, context) =>
+            {
+                Console.WriteLine($"Помилка HTTP-запиту (спроба {retryAttempt}). Очікування {timespan.TotalSeconds:N1}с. Помилка: {exception.Exception?.Message ?? exception.Result?.StatusCode.ToString()}");
+            }
+        ));
 
 // Add services to the container.
 builder.Services.AddDbContext<CurrencyContext>(options =>

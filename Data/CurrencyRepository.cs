@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using CurrencyExchangeRateAggregator.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -19,7 +15,6 @@ public class CurrencyRepository : ICurrencyRepository
     public async Task AddOrUpdateRateAsync(CurrencyRate rate)
     {
         var existingRate = await _context.CurrencyRates.FindAsync(rate.Date);
-
         if (existingRate != null)
         {
             existingRate.Rate = rate.Rate;
@@ -27,6 +22,31 @@ public class CurrencyRepository : ICurrencyRepository
         else
         {
             await _context.CurrencyRates.AddAsync(rate);
+        }
+        await _context.SaveChangesAsync();
+    }
+    
+    public async Task AddOrUpdateRatesAsync(IEnumerable<CurrencyRate> rates)
+    {
+        var existingRates = await _context.CurrencyRates.Where(r => rates.Select(x => x.Date).Contains(r.Date)).ToListAsync();
+        var newRates = new List<CurrencyRate>();
+
+        foreach (var rate in rates)
+        {
+            var existing = existingRates.FirstOrDefault(r => r.Date == rate.Date);
+            if (existing != null)
+            {
+                existing.Rate = rate.Rate;
+            }
+            else
+            {
+                newRates.Add(rate);
+            }
+        }
+
+        if (newRates.Any())
+        {
+            await _context.CurrencyRates.AddRangeAsync(newRates);
         }
 
         await _context.SaveChangesAsync();

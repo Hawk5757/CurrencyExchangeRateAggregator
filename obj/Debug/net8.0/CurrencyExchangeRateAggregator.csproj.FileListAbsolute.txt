@@ -1,5 +1,6 @@
 C:\repo_study\CurrencyExchangeRateAggregator\CurrencyExchangeRateAggregator\bin\Debug\net8.0\appsettings.Development.json
 C:\repo_study\CurrencyExchangeRateAggregator\CurrencyExchangeRateAggregator\bin\Debug\net8.0\appsettings.json
+C:\repo_study\CurrencyExchangeRateAggregator\CurrencyExchangeRateAggregator\bin\Debug\net8.0\NLog.config
 C:\repo_study\CurrencyExchangeRateAggregator\CurrencyExchangeRateAggregator\bin\Debug\net8.0\CurrencyExchangeRateAggregator.exe
 C:\repo_study\CurrencyExchangeRateAggregator\CurrencyExchangeRateAggregator\bin\Debug\net8.0\CurrencyExchangeRateAggregator.deps.json
 C:\repo_study\CurrencyExchangeRateAggregator\CurrencyExchangeRateAggregator\bin\Debug\net8.0\CurrencyExchangeRateAggregator.runtimeconfig.json
@@ -31,6 +32,7 @@ C:\repo_study\CurrencyExchangeRateAggregator\CurrencyExchangeRateAggregator\bin\
 C:\repo_study\CurrencyExchangeRateAggregator\CurrencyExchangeRateAggregator\bin\Debug\net8.0\Microsoft.Extensions.Diagnostics.dll
 C:\repo_study\CurrencyExchangeRateAggregator\CurrencyExchangeRateAggregator\bin\Debug\net8.0\Microsoft.Extensions.Diagnostics.Abstractions.dll
 C:\repo_study\CurrencyExchangeRateAggregator\CurrencyExchangeRateAggregator\bin\Debug\net8.0\Microsoft.Extensions.Http.dll
+C:\repo_study\CurrencyExchangeRateAggregator\CurrencyExchangeRateAggregator\bin\Debug\net8.0\Microsoft.Extensions.Http.Polly.dll
 C:\repo_study\CurrencyExchangeRateAggregator\CurrencyExchangeRateAggregator\bin\Debug\net8.0\Microsoft.Extensions.Logging.dll
 C:\repo_study\CurrencyExchangeRateAggregator\CurrencyExchangeRateAggregator\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
 C:\repo_study\CurrencyExchangeRateAggregator\CurrencyExchangeRateAggregator\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
@@ -38,6 +40,12 @@ C:\repo_study\CurrencyExchangeRateAggregator\CurrencyExchangeRateAggregator\bin\
 C:\repo_study\CurrencyExchangeRateAggregator\CurrencyExchangeRateAggregator\bin\Debug\net8.0\Microsoft.Extensions.Primitives.dll
 C:\repo_study\CurrencyExchangeRateAggregator\CurrencyExchangeRateAggregator\bin\Debug\net8.0\Microsoft.OpenApi.dll
 C:\repo_study\CurrencyExchangeRateAggregator\CurrencyExchangeRateAggregator\bin\Debug\net8.0\Mono.TextTemplating.dll
+C:\repo_study\CurrencyExchangeRateAggregator\CurrencyExchangeRateAggregator\bin\Debug\net8.0\NLog.dll
+C:\repo_study\CurrencyExchangeRateAggregator\CurrencyExchangeRateAggregator\bin\Debug\net8.0\NLog.Extensions.Logging.dll
+C:\repo_study\CurrencyExchangeRateAggregator\CurrencyExchangeRateAggregator\bin\Debug\net8.0\NLog.Web.AspNetCore.dll
+C:\repo_study\CurrencyExchangeRateAggregator\CurrencyExchangeRateAggregator\bin\Debug\net8.0\Polly.dll
+C:\repo_study\CurrencyExchangeRateAggregator\CurrencyExchangeRateAggregator\bin\Debug\net8.0\Polly.Core.dll
+C:\repo_study\CurrencyExchangeRateAggregator\CurrencyExchangeRateAggregator\bin\Debug\net8.0\Polly.Extensions.Http.dll
 C:\repo_study\CurrencyExchangeRateAggregator\CurrencyExchangeRateAggregator\bin\Debug\net8.0\SQLitePCLRaw.batteries_v2.dll
 C:\repo_study\CurrencyExchangeRateAggregator\CurrencyExchangeRateAggregator\bin\Debug\net8.0\SQLitePCLRaw.core.dll
 C:\repo_study\CurrencyExchangeRateAggregator\CurrencyExchangeRateAggregator\bin\Debug\net8.0\SQLitePCLRaw.provider.e_sqlite3.dll
@@ -149,6 +157,7 @@ C:\repo_study\CurrencyExchangeRateAggregator\CurrencyExchangeRateAggregator\obj\
 C:\repo_study\CurrencyExchangeRateAggregator\CurrencyExchangeRateAggregator\obj\Debug\net8.0\CurrencyExchangeRateAggregator.csproj.CoreCompileInputs.cache
 C:\repo_study\CurrencyExchangeRateAggregator\CurrencyExchangeRateAggregator\obj\Debug\net8.0\CurrencyExchangeRateAggregator.MvcApplicationPartsAssemblyInfo.cs
 C:\repo_study\CurrencyExchangeRateAggregator\CurrencyExchangeRateAggregator\obj\Debug\net8.0\CurrencyExchangeRateAggregator.MvcApplicationPartsAssemblyInfo.cache
+C:\repo_study\CurrencyExchangeRateAggregator\CurrencyExchangeRateAggregator\obj\Debug\net8.0\CurrencyExchangeRateAggregator.sourcelink.json
 C:\repo_study\CurrencyExchangeRateAggregator\CurrencyExchangeRateAggregator\obj\Debug\net8.0\staticwebassets.build.json
 C:\repo_study\CurrencyExchangeRateAggregator\CurrencyExchangeRateAggregator\obj\Debug\net8.0\staticwebassets.development.json
 C:\repo_study\CurrencyExchangeRateAggregator\CurrencyExchangeRateAggregator\obj\Debug\net8.0\staticwebassets\msbuild.CurrencyExchangeRateAggregator.Microsoft.AspNetCore.StaticWebAssets.props
