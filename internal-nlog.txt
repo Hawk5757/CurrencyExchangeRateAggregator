@@ -15,3 +15,13 @@
 2025-05-21 16:55:36.9746 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.4.0.3182. Product version: 5.4.0+4d45d445601312040107cbe2ac00e56c4bf4a60b. GlobalAssemblyCache: False
 2025-05-21 16:55:36.9922 Info Validating config: TargetNames=logconsole, logfile, ConfigItems=26, FilePath=C:\repo_study\CurrencyExchangeRateAggregator\CurrencyExchangeRateAggregator\bin\Debug\net8.0\NLog.config
 2025-05-21 16:55:37.0074 Info Configuration initialized.
+2025-05-21 17:35:55.6903 Info Registered target NLog.Targets.ConsoleTarget(Name=logconsole)
+2025-05-21 17:35:55.7031 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2025-05-21 17:35:55.7031 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.4.0.3182. Product version: 5.4.0+4d45d445601312040107cbe2ac00e56c4bf4a60b. GlobalAssemblyCache: False
+2025-05-21 17:35:55.7031 Info Validating config: TargetNames=logconsole, logfile, ConfigItems=28, FilePath=C:\repo_study\CurrencyExchangeRateAggregator\CurrencyExchangeRateAggregator\bin\Debug\net8.0\NLog.config
+2025-05-21 17:35:55.7210 Info Configuration initialized.
+2025-05-21 17:36:11.9469 Info Registered target NLog.Targets.ConsoleTarget(Name=logconsole)
+2025-05-21 17:36:11.9589 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2025-05-21 17:36:11.9589 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.4.0.3182. Product version: 5.4.0+4d45d445601312040107cbe2ac00e56c4bf4a60b. GlobalAssemblyCache: False
+2025-05-21 17:36:11.9748 Info Validating config: TargetNames=logconsole, logfile, ConfigItems=28, FilePath=C:\repo_study\CurrencyExchangeRateAggregator\CurrencyExchangeRateAggregator\bin\Debug\net8.0\NLog.config
+2025-05-21 17:36:11.9846 Info Configuration initialized.

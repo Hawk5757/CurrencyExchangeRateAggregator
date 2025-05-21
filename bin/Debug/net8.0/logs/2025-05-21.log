@@ -1,0 +1,111 @@
+2025-05-21 17:35:55.7951 DEBUG Microsoft.EntityFrameworkCore.Infrastructure An 'IServiceProvider' was created for internal use by Entity Framework. 
+2025-05-21 17:35:56.0752 DEBUG Microsoft.EntityFrameworkCore.Infrastructure Entity Framework Core 9.0.4 initialized 'CurrencyContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite:9.0.4' with options: None 
+2025-05-21 17:35:56.4338 DEBUG Microsoft.EntityFrameworkCore.Infrastructure 'CurrencyContext' disposed. 
+2025-05-21 17:36:12.0689 DEBUG Microsoft.EntityFrameworkCore.Infrastructure An 'IServiceProvider' was created for internal use by Entity Framework. 
+2025-05-21 17:36:12.3271 DEBUG Microsoft.EntityFrameworkCore.Infrastructure Entity Framework Core 9.0.4 initialized 'CurrencyContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite:9.0.4' with options: None 
+2025-05-21 17:36:12.3895 DEBUG Microsoft.EntityFrameworkCore.Database.Connection Creating DbConnection. 
+2025-05-21 17:36:12.3895 DEBUG Microsoft.EntityFrameworkCore.Database.Connection Created DbConnection. (6ms). 
+2025-05-21 17:36:12.3895 DEBUG Microsoft.EntityFrameworkCore.Migrations Migrating using database 'main' on server 'CurrencyExchange.db'. 
+2025-05-21 17:36:12.3895 DEBUG Microsoft.EntityFrameworkCore.Database.Connection Creating DbConnection. 
+2025-05-21 17:36:12.3895 DEBUG Microsoft.EntityFrameworkCore.Database.Connection Created DbConnection. (0ms). 
+2025-05-21 17:36:12.4053 DEBUG Microsoft.EntityFrameworkCore.Database.Connection Opening connection to database 'main' on server 'CurrencyExchange.db'. 
+2025-05-21 17:36:12.4053 DEBUG Microsoft.EntityFrameworkCore.Database.Connection Opened connection to database 'main' on server 'C:\repo_study\CurrencyExchangeRateAggregator\CurrencyExchangeRateAggregator\CurrencyExchange.db'. 
+2025-05-21 17:36:12.4053 DEBUG Microsoft.EntityFrameworkCore.Database.Connection Disposing connection to database 'main' on server 'CurrencyExchange.db'. 
+2025-05-21 17:36:12.4053 DEBUG Microsoft.EntityFrameworkCore.Database.Connection Disposed connection to database 'main' on server 'CurrencyExchange.db' (0ms). 
+2025-05-21 17:36:12.4053 DEBUG Microsoft.EntityFrameworkCore.Database.Connection Opening connection to database 'main' on server 'CurrencyExchange.db'. 
+2025-05-21 17:36:12.4053 DEBUG Microsoft.EntityFrameworkCore.Database.Connection Opened connection to database 'main' on server 'C:\repo_study\CurrencyExchangeRateAggregator\CurrencyExchangeRateAggregator\CurrencyExchange.db'. 
+2025-05-21 17:36:12.4053 INFO Microsoft.EntityFrameworkCore.Migrations Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long. 
+2025-05-21 17:36:12.4231 DEBUG Microsoft.EntityFrameworkCore.Database.Command Creating DbCommand for 'ExecuteScalar'. 
+2025-05-21 17:36:12.4231 DEBUG Microsoft.EntityFrameworkCore.Database.Command Created DbCommand for 'ExecuteScalar' (2ms). 
+2025-05-21 17:36:12.4231 DEBUG Microsoft.EntityFrameworkCore.Database.Command Initialized DbCommand for 'ExecuteScalar' (4ms). 
+2025-05-21 17:36:12.4231 DEBUG Microsoft.EntityFrameworkCore.Database.Command Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsLock' AND "type" = 'table'; 
+2025-05-21 17:36:12.4434 INFO Microsoft.EntityFrameworkCore.Database.Command Executed DbCommand (13ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsLock' AND "type" = 'table'; 
+2025-05-21 17:36:12.4434 DEBUG Microsoft.EntityFrameworkCore.Database.Command Creating DbCommand for 'ExecuteScalar'. 
+2025-05-21 17:36:12.4434 DEBUG Microsoft.EntityFrameworkCore.Database.Command Created DbCommand for 'ExecuteScalar' (0ms). 
+2025-05-21 17:36:12.4434 DEBUG Microsoft.EntityFrameworkCore.Database.Command Initialized DbCommand for 'ExecuteScalar' (0ms). 
+2025-05-21 17:36:12.4434 DEBUG Microsoft.EntityFrameworkCore.Database.Command Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+INSERT OR IGNORE INTO "__EFMigrationsLock"("Id", "Timestamp") VALUES(1, '2025-05-21 14:36:12.4454096+00:00');
+SELECT changes(); 
+2025-05-21 17:36:12.4531 INFO Microsoft.EntityFrameworkCore.Database.Command Executed DbCommand (7ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+INSERT OR IGNORE INTO "__EFMigrationsLock"("Id", "Timestamp") VALUES(1, '2025-05-21 14:36:12.4454096+00:00');
+SELECT changes(); 
+2025-05-21 17:36:12.4969 DEBUG Microsoft.EntityFrameworkCore.Database.Transaction Beginning transaction with isolation level 'Unspecified'. 
+2025-05-21 17:36:12.4998 DEBUG Microsoft.EntityFrameworkCore.Database.Transaction Began transaction with isolation level 'Serializable'. 
+2025-05-21 17:36:12.4998 DEBUG Microsoft.EntityFrameworkCore.Database.Command Creating DbCommand for 'ExecuteNonQuery'. 
+2025-05-21 17:36:12.4998 DEBUG Microsoft.EntityFrameworkCore.Database.Command Created DbCommand for 'ExecuteNonQuery' (0ms). 
+2025-05-21 17:36:12.4998 DEBUG Microsoft.EntityFrameworkCore.Database.Command Initialized DbCommand for 'ExecuteNonQuery' (0ms). 
+2025-05-21 17:36:12.4998 DEBUG Microsoft.EntityFrameworkCore.Database.Command Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" TEXT NOT NULL CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY,
+    "ProductVersion" TEXT NOT NULL
+); 
+2025-05-21 17:36:12.4998 INFO Microsoft.EntityFrameworkCore.Database.Command Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" TEXT NOT NULL CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY,
+    "ProductVersion" TEXT NOT NULL
+); 
+2025-05-21 17:36:12.4998 DEBUG Microsoft.EntityFrameworkCore.Database.Transaction Committing transaction. 
+2025-05-21 17:36:12.4998 DEBUG Microsoft.EntityFrameworkCore.Database.Transaction Committed transaction. 
+2025-05-21 17:36:12.4998 DEBUG Microsoft.EntityFrameworkCore.Database.Transaction Disposing transaction. 
+2025-05-21 17:36:12.4998 DEBUG Microsoft.EntityFrameworkCore.Database.Transaction Beginning transaction with isolation level 'Unspecified'. 
+2025-05-21 17:36:12.4998 DEBUG Microsoft.EntityFrameworkCore.Database.Transaction Began transaction with isolation level 'Serializable'. 
+2025-05-21 17:36:12.4998 DEBUG Microsoft.EntityFrameworkCore.Database.Connection Creating DbConnection. 
+2025-05-21 17:36:12.4998 DEBUG Microsoft.EntityFrameworkCore.Database.Connection Created DbConnection. (0ms). 
+2025-05-21 17:36:12.4998 DEBUG Microsoft.EntityFrameworkCore.Database.Connection Opening connection to database 'main' on server 'CurrencyExchange.db'. 
+2025-05-21 17:36:12.4998 DEBUG Microsoft.EntityFrameworkCore.Database.Connection Opened connection to database 'main' on server 'C:\repo_study\CurrencyExchangeRateAggregator\CurrencyExchangeRateAggregator\CurrencyExchange.db'. 
+2025-05-21 17:36:12.4998 DEBUG Microsoft.EntityFrameworkCore.Database.Connection Disposing connection to database 'main' on server 'CurrencyExchange.db'. 
+2025-05-21 17:36:12.4998 DEBUG Microsoft.EntityFrameworkCore.Database.Connection Disposed connection to database 'main' on server 'CurrencyExchange.db' (0ms). 
+2025-05-21 17:36:12.4998 DEBUG Microsoft.EntityFrameworkCore.Database.Command Creating DbCommand for 'ExecuteScalar'. 
+2025-05-21 17:36:12.4998 DEBUG Microsoft.EntityFrameworkCore.Database.Command Created DbCommand for 'ExecuteScalar' (0ms). 
+2025-05-21 17:36:12.4998 DEBUG Microsoft.EntityFrameworkCore.Database.Command Initialized DbCommand for 'ExecuteScalar' (0ms). 
+2025-05-21 17:36:12.4998 DEBUG Microsoft.EntityFrameworkCore.Database.Command Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table'; 
+2025-05-21 17:36:12.4998 INFO Microsoft.EntityFrameworkCore.Database.Command Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table'; 
+2025-05-21 17:36:12.4998 DEBUG Microsoft.EntityFrameworkCore.Database.Command Creating DbCommand for 'ExecuteReader'. 
+2025-05-21 17:36:12.4998 DEBUG Microsoft.EntityFrameworkCore.Database.Command Created DbCommand for 'ExecuteReader' (0ms). 
+2025-05-21 17:36:12.4998 DEBUG Microsoft.EntityFrameworkCore.Database.Command Initialized DbCommand for 'ExecuteReader' (0ms). 
+2025-05-21 17:36:12.4998 DEBUG Microsoft.EntityFrameworkCore.Database.Command Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId"; 
+2025-05-21 17:36:12.4998 INFO Microsoft.EntityFrameworkCore.Database.Command Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId"; 
+2025-05-21 17:36:12.5162 DEBUG Microsoft.EntityFrameworkCore.Database.Command Closing data reader to 'main' on server 'C:\repo_study\CurrencyExchangeRateAggregator\CurrencyExchangeRateAggregator\CurrencyExchange.db'. 
+2025-05-21 17:36:12.5162 DEBUG Microsoft.EntityFrameworkCore.Database.Command A data reader for 'main' on server 'C:\repo_study\CurrencyExchangeRateAggregator\CurrencyExchangeRateAggregator\CurrencyExchange.db' is being disposed after spending 2ms reading results. 
+2025-05-21 17:36:12.5162 INFO Microsoft.EntityFrameworkCore.Migrations Applying migration '20250521143556_AddIndexToCurrencyRateDate'. 
+2025-05-21 17:36:12.5162 DEBUG Microsoft.EntityFrameworkCore.Database.Command Creating DbCommand for 'ExecuteNonQuery'. 
+2025-05-21 17:36:12.5162 DEBUG Microsoft.EntityFrameworkCore.Database.Command Created DbCommand for 'ExecuteNonQuery' (0ms). 
+2025-05-21 17:36:12.5162 DEBUG Microsoft.EntityFrameworkCore.Database.Command Initialized DbCommand for 'ExecuteNonQuery' (0ms). 
+2025-05-21 17:36:12.5162 DEBUG Microsoft.EntityFrameworkCore.Database.Command Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE UNIQUE INDEX "IX_CurrencyRates_Date" ON "CurrencyRates" ("Date"); 
+2025-05-21 17:36:12.5162 INFO Microsoft.EntityFrameworkCore.Database.Command Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE UNIQUE INDEX "IX_CurrencyRates_Date" ON "CurrencyRates" ("Date"); 
+2025-05-21 17:36:12.5162 DEBUG Microsoft.EntityFrameworkCore.Database.Command Creating DbCommand for 'ExecuteNonQuery'. 
+2025-05-21 17:36:12.5162 DEBUG Microsoft.EntityFrameworkCore.Database.Command Created DbCommand for 'ExecuteNonQuery' (0ms). 
+2025-05-21 17:36:12.5162 DEBUG Microsoft.EntityFrameworkCore.Database.Command Initialized DbCommand for 'ExecuteNonQuery' (0ms). 
+2025-05-21 17:36:12.5162 DEBUG Microsoft.EntityFrameworkCore.Database.Command Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+INSERT INTO "__EFMigrationsHistory" ("MigrationId", "ProductVersion")
+VALUES ('20250521143556_AddIndexToCurrencyRateDate', '9.0.4'); 
+2025-05-21 17:36:12.5162 INFO Microsoft.EntityFrameworkCore.Database.Command Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+INSERT INTO "__EFMigrationsHistory" ("MigrationId", "ProductVersion")
+VALUES ('20250521143556_AddIndexToCurrencyRateDate', '9.0.4'); 
+2025-05-21 17:36:12.5162 DEBUG Microsoft.EntityFrameworkCore.Database.Transaction Committing transaction. 
+2025-05-21 17:36:12.5321 DEBUG Microsoft.EntityFrameworkCore.Database.Transaction Committed transaction. 
+2025-05-21 17:36:12.5321 DEBUG Microsoft.EntityFrameworkCore.Database.Command Creating DbCommand for 'ExecuteScalar'. 
+2025-05-21 17:36:12.5321 DEBUG Microsoft.EntityFrameworkCore.Database.Command Created DbCommand for 'ExecuteScalar' (0ms). 
+2025-05-21 17:36:12.5321 DEBUG Microsoft.EntityFrameworkCore.Database.Command Initialized DbCommand for 'ExecuteScalar' (0ms). 
+2025-05-21 17:36:12.5321 DEBUG Microsoft.EntityFrameworkCore.Database.Command Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+DELETE FROM "__EFMigrationsLock"; 
+2025-05-21 17:36:12.5321 INFO Microsoft.EntityFrameworkCore.Database.Command Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+DELETE FROM "__EFMigrationsLock"; 
+2025-05-21 17:36:12.5321 DEBUG Microsoft.EntityFrameworkCore.Database.Transaction Disposing transaction. 
+2025-05-21 17:36:12.5321 DEBUG Microsoft.EntityFrameworkCore.Database.Connection Closing connection to database 'main' on server 'C:\repo_study\CurrencyExchangeRateAggregator\CurrencyExchangeRateAggregator\CurrencyExchange.db'. 
+2025-05-21 17:36:12.5321 DEBUG Microsoft.EntityFrameworkCore.Database.Connection Closed connection to database 'main' on server 'CurrencyExchange.db' (2ms). 
+2025-05-21 17:36:12.5321 DEBUG Microsoft.EntityFrameworkCore.Infrastructure 'CurrencyContext' disposed. 
+2025-05-21 17:36:12.5321 DEBUG Microsoft.EntityFrameworkCore.Database.Connection Disposing connection to database 'main' on server 'CurrencyExchange.db'. 
+2025-05-21 17:36:12.5321 DEBUG Microsoft.EntityFrameworkCore.Database.Connection Disposed connection to database 'main' on server 'CurrencyExchange.db' (0ms). 
