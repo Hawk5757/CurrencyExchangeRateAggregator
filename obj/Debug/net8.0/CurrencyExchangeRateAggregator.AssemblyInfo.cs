@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CurrencyExchangeRateAggregator")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2c32865489e02975a606900841c2aa0377dede77")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+82d61a4937be51b0b2e2560c0f259ed7fd6bff22")]
 [assembly: System.Reflection.AssemblyProductAttribute("CurrencyExchangeRateAggregator")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CurrencyExchangeRateAggregator")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
