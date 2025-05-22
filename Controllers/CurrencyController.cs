@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
 using CurrencyExchangeRateAggregator.Data;
+using CurrencyExchangeRateAggregator.Models;
 using CurrencyExchangeRateAggregator.Services;
 using Swashbuckle.AspNetCore.Annotations;
 
@@ -60,6 +61,12 @@ public class CurrencyController : ControllerBase
     }
 
     [HttpGet("date/{date}")]
+    [HttpGet("date/{date}")]
+    [SwaggerOperation(Summary = "Отримати курс валют UAH/USD за вказану дату", Description = "Повертає офіційний курс гривні до долара США на конкретну дату.")]
+    [SwaggerResponse(200, "Успішно отримано курс", typeof(CurrencyRate))]
+    [SwaggerResponse(400, "Некоректний формат дати")]
+    [SwaggerResponse(404, "Курс на вказану дату не знайдено")]
+    [SwaggerResponse(500, "Внутрішня помилка сервера")]
     public async Task<ActionResult<decimal>> GetRateByDate(
         [Required] [SwaggerParameter(Description = "Дата у форматі РРРР-ММ-ДД")]
         DateTime date)
@@ -106,68 +113,53 @@ public class CurrencyController : ControllerBase
         return Ok(rate.Rate);
     }
 
-    [HttpGet("average")]
+    [HttpGet("average")] // Використовуємо FromQuery для дат у URL
+    [SwaggerOperation(Summary = "Отримати середній курс UAH/USD за період", Description = "Обчислює середньодобове значення курсу гривні до долара США за вказаний період.")]
+    [SwaggerResponse(200, "Успішно отримано середній курс", typeof(decimal))]
+    [SwaggerResponse(400, "Некоректний запит (формат дати, період не відповідає вимогам, початкова дата пізніша за кінцеву)")]
+    [SwaggerResponse(404, "Дані для обчислення середнього курсу не знайдено")]
+    [SwaggerResponse(500, "Внутрішня помилка сервера")]
     public async Task<ActionResult<decimal>> GetAverageRate(
         [FromQuery] [SwaggerParameter(Description = "Дата початку періоду у форматі YYYY-MM-DD")]
         DateTime startDate,
         [FromQuery] [SwaggerParameter(Description = "Дата закінчення періоду у форматі YYYY-MM-DD")]
         DateTime endDate)
     {
-        _logger.LogInformation($"Отримано запит на середній курс за період з {startDate} по {endDate}.");
+        _logger.LogInformation(
+            $"CurrencyController: Отримано запит на середній курс за період з {startDate:yyyy-MM-dd} по {endDate:yyyy-MM-dd}.");
 
         if (startDate > endDate)
         {
-            _logger.LogError($"Некоректний запит: дата початку ({startDate}) пізніше за дату закінчення ({endDate}).");
+            _logger.LogWarning(
+                $"CurrencyController: Некоректний запит: дата початку ({startDate:yyyy-MM-dd}) пізніше за дату закінчення ({endDate:yyyy-MM-dd}).");
             return BadRequest("Дата початку періоду не може бути пізніше за дату закінчення.");
         }
 
-        var retentionMonths = _configuration.GetValue<int>("DataRetentionMonths");
-        var earliestAllowedDate = DateTime.UtcNow.AddMonths(-retentionMonths).Date.AddDays(1);
-
-        if (startDate < earliestAllowedDate || endDate < earliestAllowedDate)
+        try
         {
-            _logger.LogWarning(
-                $"Запит за межами дозволеного періоду. Запит з {startDate} по {endDate}, дозволено з {earliestAllowedDate}.");
-            return BadRequest(
-                $"Вказаний період містить дані, старші за {retentionMonths} місяців. Будь ласка, виберіть період починаючи з {earliestAllowedDate.ToString("yyyy-MM-dd")} або пізніше.");
-        }
+            var averageRate = await _currencyService.GetAverageRateAsync(startDate.Date, endDate.Date);
 
-        var ratesFromDb = await _currencyRepository.GetRatesByPeriodAsync(startDate.Date, endDate.Date);
-        var periodLength = (endDate.Date - startDate.Date).Days + 1;
-
-        if (ratesFromDb.Count() < periodLength)
-        {
-            _logger.LogInformation($"Недостатньо даних у базі за період з {startDate} по {endDate}. Запит до API.");
-            var ratesFromApi = await _currencyService.GetCurrencyRatesAsync(startDate.Date, endDate.Date);
-            if (ratesFromApi != null)
+            if (!averageRate.HasValue)
             {
-                _logger.LogInformation($"Отримано {ratesFromApi.Count()} курсів від API. Збереження в базу даних.");
-                foreach (var rate in ratesFromApi)
-                {
-                    await _currencyRepository.AddOrUpdateRateAsync(rate);
-                }
+                _logger.LogWarning(
+                    $"CurrencyController: Дані для обчислення середнього курсу за період з {startDate:yyyy-MM-dd} по {endDate:yyyy-MM-dd} не знайдено.");
+                return NotFound("Дані для обчислення середнього курсу за вказаний період не знайдено або недостатньо.");
+            }
 
-                ratesFromDb = await _currencyRepository.GetRatesByPeriodAsync(startDate.Date, endDate.Date);
-            }
-            else
-            {
-                _logger.LogError($"Не вдалося отримати дані від API за період з {startDate} по {endDate}.");
-            }
+            _logger.LogInformation(
+                $"CurrencyController: Середній курс за період з {startDate:yyyy-MM-dd} по {endDate:yyyy-MM-dd} успішно обчислено: {averageRate.Value:N4}.");
+            return Ok(averageRate.Value);
         }
-
-        if (!ratesFromDb.Any(r => r.Date >= startDate.Date && r.Date <= endDate.Date))
+        catch (ArgumentOutOfRangeException ex)
         {
-            _logger.LogWarning(
-                $"Курси за період з {startDate.ToString("yyyy-MM-dd")} по {endDate.ToString("yyyy-MM-dd")} не знайдено.");
-            return NotFound(
-                $"Курси за період з {startDate.ToShortDateString()} по {endDate.ToShortDateString()} не знайдено.");
+            _logger.LogWarning($"CurrencyController: Помилка перевірки діапазону для середнього курсу: {ex.Message}");
+            return BadRequest(ex.Message); // Повертаємо повідомлення про помилку retention
         }
-
-        var averageRate = ratesFromDb
-            .Where(r => r.Date >= startDate.Date && r.Date <= endDate.Date)
-            .Average(r => r.Rate);
-
-        _logger.LogInformation($"Середній курс за період з {startDate} по {endDate}: {averageRate}.");
-        return Ok(averageRate);
+        catch (Exception ex)
+        {
+            _logger.LogError(ex,
+                $"CurrencyController: Непередбачена помилка при отриманні середнього курсу за період з {startDate:yyyy-MM-dd} по {endDate:yyyy-MM-dd}.");
+            return StatusCode(500, "Внутрішня помилка сервера при обчисленні середнього курсу.");
+        }
     }
 }

@@ -162,4 +162,21 @@ public class NbuCurrencyService : ICurrencyService
         var rates = await GetCurrencyRatesAsync(date, date);
         return rates?.FirstOrDefault();
     }
+    
+    public async Task<decimal?> GetAverageRateAsync(DateTime startDate, DateTime endDate)
+    {
+        _logger.LogInformation($"NbuCurrencyService: Обчислення середнього курсу за період з {startDate:yyyy-MM-dd} по {endDate:yyyy-MM-dd}.");
+
+        var rates = await GetCurrencyRatesAsync(startDate, endDate);
+
+        if (rates != null && rates.Any())
+        {
+            var averageRate = rates.Average(r => r.Rate);
+            _logger.LogInformation($"NbuCurrencyService: Середній курс за період {startDate:yyyy-MM-dd} - {endDate:yyyy-MM-dd} становить: {averageRate:N4}.");
+            return averageRate;
+        }
+            
+        _logger.LogWarning($"NbuCurrencyService: Немає даних для обчислення середнього курсу за період з {startDate:yyyy-MM-dd} по {endDate:yyyy-MM-dd}.");
+        return null;
+    }
 }

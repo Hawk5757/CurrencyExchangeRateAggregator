@@ -6,4 +6,6 @@ public interface ICurrencyService
 {
     Task<CurrencyRate> GetCurrencyRateAsync(DateTime date);
     Task<IEnumerable<CurrencyRate>> GetCurrencyRatesAsync(DateTime startDate, DateTime endDate);
+    
+    Task<decimal?> GetAverageRateAsync(DateTime startDate, DateTime endDate);
 }
