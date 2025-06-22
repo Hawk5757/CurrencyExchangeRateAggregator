@@ -1,70 +1,70 @@
-Currency Exchange Rate Aggregator
+# Currency Exchange Rate Aggregator
 
-## Початкове Технічне Завдання (ТЗ)
+## Initial Technical Specification (TS)
 
 ### User Story:
-"Як користувач, я хочу аналізувати курс гривні до долара, а також мати можливість подивитися середній курс за певний період, щоб приймати рішення про купівлю чи продаж валюти."
+"As a user, I want to analyze the Hryvnia to US Dollar exchange rate, and also be able to view the average rate over a certain period, to make decisions about buying or selling currency."
 
 ### Description:
-Реалізувати сервіс, який отримує курс гривні до долара США з відкритого джерела, та надає REST-інтерфейс для доступу до поточного та середнього курсу за вибраний період.
-Мета — оцінити технічну компетентність кандидата, вміння працювати з API, організовувати структуру застосунку, а також реалізовувати бізнес-логіку з урахуванням збереження й агрегування даних.
+Implement a service that obtains the Hryvnia to US Dollar exchange rate from an open source and provides a REST interface for accessing the current and average rate for a selected period.
+The goal is to assess the candidate's technical competence, ability to work with APIs, organize application structure, and implement business logic considering data storage and aggregation.
 
 ### Acceptance Criteria:
-1.  Є змога отримати дані курсу валют UAH/USD за певну дату.
-2.  Є змога отримати середньодобове значення курсу за період.
+1. Ability to retrieve UAH/USD exchange rate data for a specific date.
+2. Ability to retrieve the daily average rate for a period.
 
 ### Notes:
-* Джерело даних: API НБУ або інший публічний API з курсами валют (тільки офіційний курс UAH/USD).
-* База даних: SQLite, InMemory або інша, на вибір кандидата.
-* Сервіс в подальшому має бути без проблем інтегрований з іншим сервісом чи веб-додатком.
-* Для тестового завдання достатньо буде збирати дані не старше 3х місяців.
+* Data source: NBU API or another public API with exchange rates (only official UAH/USD rate).
+* Database: SQLite, InMemory, or another, at the candidate's discretion.
+* The service should be easily integrable with another service or web application in the future.
+* For the test task, it is sufficient to collect data no older than 3 months.
 
 ---
 
-## Загальний опис рішення
+## General Solution Overview
 
-Цей проєкт є ASP.NET Core Web API, призначеним для агрегації та надання історичних і поточних курсів обміну валют (наразі UAH/USD) від Національного банку України (НБУ). Він дозволяє ефективно отримувати, зберігати та надавати дані про курси валют, забезпечуючи при цьому стійкість до тимчасових проблем із зовнішніми API та оптимальну продуктивність бази даних.
+This project is an ASP.NET Core Web API designed to aggregate and provide historical and current exchange rates (currently UAH/USD) from the National Bank of Ukraine (NBU). It efficiently retrieves, stores, and serves currency rate data, ensuring resilience against temporary external API issues and optimal database performance.
 
-Основні функціональні можливості:
-* Отримання курсів валют за конкретну дату або період.
-* Отримання останнього доступного курсу.
-* Зберігання отриманих даних у локальній базі даних SQLite для швидкого доступу та зменшення кількості запитів до зовнішніх сервісів.
-* Підтримка обмежень на глибину історії даних (data retention) для оптимізації зберігання.
+Key functionalities:
+* Retrieving currency rates for a specific date or period.
+* Retrieving the latest available rate.
+* Storing retrieved data in a local SQLite database for quick access and reducing external API requests.
+* Supporting data retention limits for storage optimization.
 
-## Ключові технології та бібліотеки
+## Key Technologies and Libraries
 
-* **ASP.NET Core**: Фреймворк для побудови веб-API.
-* **Entity Framework Core**: ORM для взаємодії з базою даних SQLite.
-* **NLog**: Гнучка бібліотека для логування подій застосунку.
-* **Polly**: Бібліотека для реалізації політик стійкості (таких як повторні спроби - retries) для HTTP-запитів.
-* **Swagger/OpenAPI**: Для автоматичної генерації документації API та зручного тестування.
+* **ASP.NET Core**: Framework for building web APIs.
+* **Entity Framework Core**: ORM for interacting with the SQLite database.
+* **NLog**: Flexible logging library for application events.
+* **Polly**: Library for implementing resilience policies (such as retries) for HTTP requests.
+* **Swagger/OpenAPI**: For automatic API documentation generation and easy testing.
 
-## Покращення та оптимізації
+## Improvements and Optimizations
 
-У процесі розробки та вдосконалення рішення були імплементовані наступні важливі покращення:
+During the development and enhancement of the solution, the following significant improvements have been implemented:
 
-1.  **Логування (NLog)**:
-    * Впроваджено централізоване логування за допомогою NLog, що дозволяє відстежувати роботу застосунку, ідентифікувати помилки та попередження. Логи записуються як у консоль, так і в файли за датою.
-2.  **Механізм повторних спроб (Retries) для HTTP-запитів (Polly)**:
-    * Додано політику повторних спроб на HTTP-запити до зовнішнього API НБУ за допомогою бібліотеки Polly. Це підвищує стійкість застосунку до тимчасових мережевих проблем або перевантаження зовнішнього сервісу, автоматично повторюючи запити з експоненціальною затримкою.
-3.  **Оптимізація роботи з базою даних**:
-    * **Пакетне додавання/оновлення записів**: Замість поодиноких операцій запису в базу даних, реалізовано механізм пакетного додавання та оновлення курсів (метод `AddOrUpdateRatesAsync` у `CurrencyRepository`). Це значно зменшує кількість звернень до БД та підвищує продуктивність при синхронізації великої кількості даних.
-    * **Індекси в базі даних**: Додано унікальний індекс на поле `Date` у таблиці `CurrencyRates`. Це значно прискорює пошук, фільтрацію та сортування даних за датою, оптимізуючи запити до бази даних.
-4.  **Винесення бізнес-логіки**:
-    * Бізнес-логіка, така як обчислення середнього курсу (`GetAverageRate`), була винесена з контролера в окремий сервісний шар (`ICurrencyService`), що підвищує модульність, тестування та читабельність коду.
-5.  **Оптимізація `using` директив**:
-    * Видалено зайві (`unnecessary`) `using` директиви в коді, особливо ті, які автоматично імпортуються завдяки функції **Implicit Usings** у сучасних версіях .NET. Це покращує читабельність та чистоту коду.
-6.  **Кешування в пам'яті (IMemoryCache)**:
-    * Впроваджено кешування даних про курси валют у пам'яті застосунку за допомогою `IMemoryCache`. Це дозволяє значно прискорити повторні запити на вже отримані дати, зменшуючи навантаження на базу даних та зовнішні API, і забезпечуючи блискавичну відповідь для часто запитуваних даних.
+1.  **Logging (NLog)**:
+    * Centralized logging using NLog has been introduced, allowing monitoring application operation, identifying errors and warnings. Logs are written to both the console and daily files.
+2.  **Retry Mechanism for HTTP Requests (Polly)**:
+    * A retry policy has been added to HTTP requests to the external NBU API using the Polly library. This increases the application's resilience to temporary network issues or external service overload, automatically retrying requests with exponential backoff.
+3.  **Database Operations Optimization**:
+    * **Batch Add/Update Records**: Instead of single database write operations, a mechanism for batch adding and updating rates (`AddOrUpdateRatesAsync` method in `CurrencyRepository`) has been implemented. This significantly reduces the number of database accesses and improves performance when synchronizing large amounts of data.
+    * **Database Indexes**: A unique index has been added to the `Date` field in the `CurrencyRates` table. This significantly speeds up data retrieval, filtering, and sorting by date, optimizing database queries.
+4.  **Business Logic Encapsulation**:
+    * Business logic, such as average rate calculation (`GetAverageRate`), has been moved from the controller to a separate service layer (`ICurrencyService`), improving modularity, testability, and code readability.
+5.  **`using` Directive Optimization**:
+    * Unnecessary `using` directives have been removed from the code, especially those automatically imported by the **Implicit Usings** feature in modern .NET versions. This enhances code readability and cleanliness.
+6.  **In-Memory Caching (IMemoryCache)**:
+    * In-memory caching of currency rate data has been implemented using `IMemoryCache`. This significantly speeds up repeated requests for already retrieved dates, reducing the load on the database and external APIs, and providing lightning-fast responses for frequently requested data.
 
-## Початок роботи
+## Getting Started
 
-### Передумови
+### Prerequisites
 
-* .NET SDK (рекомендовано .NET 8.0 або вище)
-* IDE: Rider або Visual Studio
+* .NET SDK (recommended .NET 8.0 or higher)
+* IDE: Rider or Visual Studio
 
-### Клонування репозиторію
+### Cloning the Repository
 
 ```bash
 git clone [https://github.com/Hawk5757/CurrencyExchangeRateAggregator.git](https://github.com/Hawk5757/CurrencyExchangeRateAggregator.git)
